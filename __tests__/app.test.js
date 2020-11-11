@@ -31,7 +31,7 @@ describe('app routes', () => {
       return client.end(done);
     });
 
-    test('returns todos', async() => {
+    test('return todo items for single user', async() => {
 
       const expectation = [
         {
