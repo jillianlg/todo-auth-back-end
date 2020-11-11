@@ -61,5 +61,29 @@ describe('app routes', () => {
 
       expect(data.body).toEqual(expectation);
     });
+
+    test('return one task for single user', async() => {
+
+      const expectation = [
+        {
+          'id': 4,
+          'task': 'sweep',
+          'completed': false,
+          'owner_id': 2
+        }
+      ];
+
+      const data = await fakeRequest(app)
+        .post('/api/todos')
+        .send({
+          'task': 'sweep',
+          'completed': false,
+        })
+        .set('Authorization', token)
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+    });
   });
 });
